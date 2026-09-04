@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Authentication</title>
+  </head>
+  <body>
+    <main>
+      <h1>Authentication</h1>
+      <section aria-labelledby="login-heading">
+        <h2 id="login-heading">Log in</h2>
+        <form id="login-form">
+          <label for="login-email">Login email</label>
+          <input id="login-email" type="email" required />
+          <label for="login-password">Login password</label>
+          <input id="login-password" type="password" required />
+          <button type="submit">Log in</button>
+        </form>
+      </section>
+      <section aria-labelledby="register-heading">
+        <h2 id="register-heading">Register</h2>
+        <form id="register-form">
+          <label for="register-name">Registration name</label>
+          <input id="register-name" required />
+          <label for="register-email">Registration email</label>
+          <input id="register-email" type="email" required />
+          <label for="register-password">Registration password</label>
+          <input id="register-password" type="password" required />
+          <button type="submit">Register</button>
+        </form>
+      </section>
+      <p role="status" aria-live="polite"></p>
+    </main>
+    <script>
+      const status = document.querySelector('[role="status"]');
+      document.querySelector('#login-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        status.textContent = `Welcome, ${document.querySelector('#login-email').value}`;
+      });
+      document.querySelector('#register-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        status.textContent = `Account created for ${document.querySelector('#register-name').value}`;
+      });
+    </script>
+  </body>
+</html>

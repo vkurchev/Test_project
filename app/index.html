@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Todo application</title>
+  </head>
+  <body>
+    <main>
+      <h1>My tasks</h1>
+      <form>
+        <label for="new-task">New task</label>
+        <input id="new-task" autocomplete="off" />
+        <button type="submit">Add</button>
+      </form>
+      <ul aria-label="Task list"></ul>
+    </main>
+    <script>
+      const form = document.querySelector('form');
+      const input = document.querySelector('input');
+      const list = document.querySelector('ul');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const title = input.value.trim();
+        if (!title) return;
+        const item = document.createElement('li');
+        item.textContent = title;
+        list.append(item);
+        input.value = '';
+      });
+    </script>
+  </body>
+</html>
